@@ -1,8 +1,12 @@
 # Architecture Documentation
 
-This directory contains:
+This directory contains architecture-related documentation for the CloudCart Platform.
+
+Planned documentation:
 - system design
-- networking architecture
+- microservices architecture
 - Kubernetes architecture
+- networking flow
 - observability architecture
-- deployment architecture
+- CI/CD architecture
+- GitOps workflow

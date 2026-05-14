@@ -1,7 +1,10 @@
-# Setup Documentation
+# Project Roadmap
 
-This directory contains:
-- local setup steps
-- Minikube setup
-- tooling installation
-- environment configuration
+This directory contains the CloudCart Platform execution roadmap.
+
+Planned roadmap sections:
+- project phases
+- implementation milestones
+- future enhancements
+- platform evolution
+- AIOps integration plans
