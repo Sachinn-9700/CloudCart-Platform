@@ -1,0 +1,37 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    env_file:
+      - database/postgres/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - cloudcart-network
+
+  auth-service:
+    image: cloudcart-auth-service:v1
+    container_name: auth-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - cloudcart-network
+
+  frontend:
+    image: cloudcart-frontend:v1
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - auth-service
+    networks:
+      - cloudcart-network
+
+volumes:
+  postgres_data:
+
+networks:
+  cloudcart-network:
