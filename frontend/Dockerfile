@@ -1,7 +1,22 @@
-FROM node:22-alpine 
+#multi stage build
+# Stage 1 build react app
+FROM node:22-alpine AS builder
+
 WORKDIR /app
+
 COPY package*.json ./
+
 RUN npm install
+
 COPY . .
-EXPOSE 5173
-CMD ["npm", "run", "dev", "--", "--host"]
+
+RUN npm run build
+# Stage 2 serve the app
+FROM nginx:alpine
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx","-g","daemon off;"]
+
