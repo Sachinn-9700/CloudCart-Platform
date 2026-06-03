@@ -3,28 +3,38 @@ services:
   postgres:
     image: postgres:16
     container_name: postgres
-    env_file:
-      - database/postgres/.env
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cloudcart
+      POSTGRES_PASSWORD: cloudcart
+      POSTGRES_DB: cloudcart_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cloudcart -d cloudcart_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
     networks:
       - cloudcart-network
 
   auth-service:
-    image: cloudcart-auth-service:v1
+    image: cloudcart-auth-service:python312-alpine
     container_name: auth-service
     ports:
       - "8000:8000"
     depends_on:
-      - postgres
+     postgres:
+      condition: service_healthy
     networks:
       - cloudcart-network
 
   frontend:
-    image: cloudcart-frontend:v1
+    image: cloudcart-frontend:multistage
     container_name: frontend
     ports:
-      - "5173:5173"
+      - "5173:80"
     depends_on:
       - auth-service
     networks:
