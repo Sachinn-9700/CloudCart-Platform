@@ -169,12 +169,13 @@ Improvements:
 
 ## Frontend Benchmark Results
 
-| Image          | Build Time | Disk Usage | Content Size | Container Startup |
-| -------------- | ---------- | ---------- | ------------ | ----------------- |
-| node:20        | 02:41 Min  | 1.8 GB     | 467 MB       | Passed            |
-| node:20-slim   | 01:01 Min  | 518 MB     | 140 MB       | Passed            |
-| node:22-slim   | 58.7 Sec   | 558 MB     | 149 MB       | Passed            |
-| node:22-alpine | 52.9 Sec   | 461 MB     | 126 MB       | Passed            |
+| Image               | Build Time | Disk Usage | Content Size | Validation |
+| ------------------- | ---------- | ---------- | ------------ | ---------- |
+| node:20             | 02:41 Min  | 1.8 GB     | 467 MB       | Passed     |
+| node:20-slim        | 01:01 Min  | 518 MB     | 140 MB       | Passed     |
+| node:22-slim        | 58.7 Sec   | 558 MB     | 149 MB       | Passed     |
+| node:22-alpine      | 52.9 Sec   | 461 MB     | 126 MB       | Passed     |
+| Multi-Stage + Nginx | 15 Sec     | 93 MB      | 26.1 MB      | Passed     |
 
 ---
 
@@ -188,6 +189,8 @@ node:20-slim
 node:22-slim
       ↓
 node:22-alpine
+      ↓
+Multi-Stage Build + Nginx
 ```
 
 ---
@@ -233,14 +236,49 @@ Improvements:
 
 ### node:22-alpine
 
-The Alpine variant delivered the smallest frontend image.
+The Alpine variant delivered the smallest frontend image among single-stage builds.
 
 Improvements:
 
-* Smallest disk usage
-* Smallest content size
-* Fastest build among tested frontend images
+* Smallest disk usage among Node runtime images
+* Smallest content size among Node runtime images
+* Fastest build among tested Node images
 * Successful startup validation
+
+---
+
+## Frontend Production Optimization (Multi-Stage Build)
+
+After selecting node:22-alpine as the best Node runtime image, an additional optimization phase was performed using a multi-stage Docker build.
+
+The React application was compiled during the build stage using Node.js and the generated static assets were served using Nginx.
+
+### Build Stage
+
+* node:22-alpine
+* npm install
+* npm run build
+
+### Runtime Stage
+
+* nginx:alpine
+* Only compiled static assets copied into runtime image
+
+### Validation
+
+* Container startup successful
+* Nginx served application correctly
+* Frontend accessible successfully
+* Static assets loaded successfully
+
+### Benefits
+
+* No Node.js runtime required in production
+* Smaller attack surface
+* Faster startup time
+* Reduced image size
+* Lower registry storage consumption
+* Better Kubernetes deployment efficiency
 
 ---
 
@@ -248,17 +286,19 @@ Improvements:
 
 ### Selected Image
 
-**node:22-alpine**
+**Multi-Stage Build (node:22-alpine + nginx:alpine)**
 
 ### Reasons
 
 * Smallest image footprint
-* Latest Node.js runtime
-* Fastest build performance
-* Successful startup validation
-* Reduced storage requirements
-* Reduced registry transfer cost
+* Production-grade deployment architecture
+* Static assets served by Nginx
+* Reduced attack surface
+* Faster startup time
+* Lower registry storage usage
 * Better Kubernetes deployment efficiency
+* Improved scalability
+* Successful validation testing
 
 ---
 
@@ -274,48 +314,97 @@ Improvements:
 
 ### After Optimization
 
-| Metric       | Value          |
-| ------------ | -------------- |
-| Base Image   | node:22-alpine |
-| Disk Usage   | 461 MB         |
-| Content Size | 126 MB         |
+| Metric        | Value          |
+| ------------- | -------------- |
+| Build Image   | node:22-alpine |
+| Runtime Image | nginx:alpine   |
+| Disk Usage    | 93 MB          |
+| Content Size  | 26.1 MB        |
 
 ### Improvement
 
-* Disk Usage Reduced: ~74%
-* Content Size Reduced: ~73%
+* Disk Usage Reduced: ~95%
+* Content Size Reduced: ~94%
 * Frontend Functionality Maintained: 100%
 * Container Startup Validation: 100%
+* Static Asset Delivery Validated: 100%
+
+---
+
+# Docker Compose Validation
+
+After optimization, the complete CloudCart platform was validated using Docker Compose.
+
+### Services Validated
+
+* PostgreSQL Database
+* Auth Service (FastAPI)
+* Frontend Service (React + Nginx)
+
+### Validation Commands
+
+```bash
+docker compose up -d
+
+curl http://localhost:8000/health
+curl http://localhost:8000/db-health
+curl http://localhost:5173
+```
+
+### Results
+
+| Service                            | Validation |
+| ---------------------------------- | ---------- |
+| PostgreSQL                         | Passed     |
+| Auth Service Health Check          | Passed     |
+| Auth Service Database Connectivity | Passed     |
+| Frontend Accessibility             | Passed     |
+| Docker Compose Deployment          | Passed     |
 
 ---
 
 # Overall Platform Result
 
-## Backend
+## Backend Winner
 
-**Winner:** python:3.12-alpine
+**python:3.12-alpine**
 
 * Disk Usage: 153 MB
 * Content Size: 36.7 MB
 
-## Frontend
+---
 
-**Winner:** node:22-alpine
+## Frontend Winner
 
-* Disk Usage: 461 MB
-* Content Size: 126 MB
+**Multi-Stage Build (node:22-alpine + nginx:alpine)**
+
+* Disk Usage: 93 MB
+* Content Size: 26.1 MB
 
 ---
 
-## Conclusion
+# Conclusion
 
 A complete container image optimization exercise was performed across both backend and frontend services.
 
-The platform successfully migrated from large default runtime images to lightweight Alpine-based images while preserving application functionality and service reliability.
+Backend services were optimized using lightweight Alpine-based Python images while maintaining full application functionality and database connectivity.
 
-Final selected production images:
+Frontend services were optimized using a production-grade multi-stage build strategy where Node.js was used only during the build phase and Nginx was used as the runtime image for serving static assets.
+
+Final Production Images:
 
 * Backend: python:3.12-alpine
-* Frontend: node:22-alpine
+* Frontend Build Stage: node:22-alpine
+* Frontend Runtime Stage: nginx:alpine
 
-The optimization significantly reduced image sizes, registry storage requirements, deployment transfer times, and overall Kubernetes deployment overhead while maintaining full application functionality.
+Key Achievements:
+
+* Backend image reduced from 1.67 GB to 153 MB
+* Frontend image reduced from 1.8 GB to 93 MB
+* Registry storage significantly reduced
+* Faster image distribution
+* Faster Kubernetes deployments
+* Smaller attack surface
+* Production-ready container architecture
+
+All application functionality, health checks, database connectivity, frontend accessibility, and Docker Compose validations were successfully completed.
