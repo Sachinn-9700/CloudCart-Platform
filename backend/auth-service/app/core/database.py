@@ -1,15 +1,18 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.orm import sessionmaker
+import os
 
-DATABASE_URL = "postgresql://cloudcart_user:cloudcart_password@postgres:5432/cloudcart"
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT", "5432")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-engine = create_engine(DATABASE_URL)
+required_vars = [DB_HOST, DB_NAME, DB_USER, DB_PASSWORD]
 
-SessionLocal = sessionmaker(
-    autocommit=False,
-    autoflush=False,
-    bind=engine
+if not all(required_vars):
+    raise ValueError("Database environment variables are missing")
+
+DATABASE_URL = (
+    f"postgresql://{DB_USER}:{DB_PASSWORD}"
+    f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 )
 
-Base = declarative_base()
