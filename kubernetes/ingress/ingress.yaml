@@ -1,8 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
+
 metadata:
   name: cloudcart-ingress
   namespace: cloudcart
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+
 spec:
   ingressClassName: nginx
 
@@ -10,6 +15,15 @@ spec:
   - host: cloudcart.local
     http:
       paths:
+
+      - path: /api(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: auth-service
+            port:
+              number: 8000
+
       - path: /
         pathType: Prefix
         backend:
@@ -17,3 +31,5 @@ spec:
             name: frontend
             port:
               number: 80
+
+              
