@@ -1,0 +1,22 @@
+frontend:
+  replicas: 1
+  image: cloudcart-frontend:multistage
+
+backend:
+  replicas: 1
+  image: cloudcart-auth-service:python312-alpine
+
+postgres:
+  replicas: 1
+  image: postgres:16
+  DB_name: cloudcart
+  
+
+ingress:
+  host: cloudcart.local
+
+hpa:
+  minReplicas: 1
+  maxReplicas: 5
+  cpuUtilization: 50
+
