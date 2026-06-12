@@ -21,7 +21,7 @@ spec:
       containers:
         - name: auth-service
 
-          image: cloudcart-auth-service:python312-alpine
+          image: cloudcart-auth-service:v3
           imagePullPolicy: Never
 
           ports:
