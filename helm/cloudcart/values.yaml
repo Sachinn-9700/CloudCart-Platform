@@ -4,7 +4,7 @@ frontend:
 
 backend:
   replicas: 1
-  image: cloudcart-auth-service:python312-alpine
+  image: cloudcart-auth-service:v3
 
 postgres:
   replicas: 1
