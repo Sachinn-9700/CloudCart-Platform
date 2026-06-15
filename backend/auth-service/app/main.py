@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from sqlalchemy import text
 from prometheus_fastapi_instrumentator import Instrumentator
-
 from app.api.auth import router as auth_router
 from app.core.database import engine
 from app.core.database import Base
