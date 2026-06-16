@@ -22,4 +22,4 @@ spec:
 
       target:
         type: Utilization
-        averageUtilization: 75
+        averageUtilization: 60
