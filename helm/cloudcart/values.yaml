@@ -4,7 +4,7 @@ frontend:
 
 backend:
   replicas: 1
-  image: cloudcart-auth-service:v3
+  image: cloudcart-auth-service:v1
 
 postgres:
   replicas: 1

@@ -4,6 +4,7 @@ kind: Deployment
 metadata:
   name: auth-service
   namespace: cloudcart
+  
 
 spec:
   replicas: {{ .Values.backend.replicas }}

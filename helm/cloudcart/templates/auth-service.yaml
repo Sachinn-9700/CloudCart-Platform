@@ -3,7 +3,9 @@ kind: Service
 metadata:
   name: auth-service
   namespace: cloudcart
-
+  labels:
+    app: auth-service
+    
 spec:
   selector:
     app: auth-service
