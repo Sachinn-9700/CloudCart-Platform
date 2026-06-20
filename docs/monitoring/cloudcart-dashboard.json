@@ -5,8 +5,8 @@
     "name": "ad697qt",
     "namespace": "default",
     "uid": "f4bfdee5-e10a-4ea3-88e5-bd02b3d6452b",
-    "resourceVersion": "1781989723242987",
-    "generation": 24,
+    "resourceVersion": "1781990614474001",
+    "generation": 27,
     "creationTimestamp": "2026-06-19T21:48:30Z",
     "labels": {
       "grafana.app/deprecatedInternalID": "936328737857536"
@@ -14,10 +14,9 @@
     "annotations": {
       "grafana.app/createdBy": "user:efpfmugl30u80d",
       "grafana.app/folder": "",
-      "grafana.app/message": ",",
       "grafana.app/saved-from-ui": "Grafana v13.0.2 (3fcdbc5a)",
       "grafana.app/updatedBy": "user:efpfmugl30u80d",
-      "grafana.app/updatedTimestamp": "2026-06-20T21:08:43Z"
+      "grafana.app/updatedTimestamp": "2026-06-20T21:23:34Z"
     }
   },
   "spec": {
@@ -510,7 +509,7 @@
         "kind": "Panel",
         "spec": {
           "id": 5,
-          "title": "Memory Usage",
+          "title": "Auth Service Memory Per Pod",
           "description": "",
           "links": [],
           "data": {
@@ -686,7 +685,7 @@
                     ]
                   },
                   "color": {
-                    "mode": "palette-classic"
+                    "mode": "thresholds"
                   },
                   "custom": {
                     "axisBorderShow": false,
@@ -1065,7 +1064,7 @@
     "tags": [],
     "timeSettings": {
       "timezone": "browser",
-      "from": "now-3h",
+      "from": "now-6h",
       "to": "now",
       "autoRefresh": "",
       "autoRefreshIntervals": [
