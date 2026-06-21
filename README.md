@@ -29,7 +29,7 @@ The project starts locally on Minikube and is designed for future migration to A
 * Kubernetes
 * Minikube
 * Helm
-* NGINX Ingress
+* Ingress
 
 ## CI/CD & GitOps
 
