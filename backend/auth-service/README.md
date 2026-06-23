@@ -14,7 +14,7 @@ Authentication and authorization service for the CloudCart Platform.
 
 - FastAPI
 - Python
-- PostgreSQL (planned)
+- PostgreSQL
 
 ## Planned Endpoints
 
