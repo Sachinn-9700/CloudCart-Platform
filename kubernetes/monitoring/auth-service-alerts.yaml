@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+
+metadata:
+  name: auth-service-alerts
+  namespace: monitoring
+
+  labels:
+    release: monitoring
+
+spec:
+  groups:
+  - name: cloudcart-alerts
+
+    rules:
+    - alert: AuthServiceDown
+
+      expr: kube_deployment_status_replicas_available{deployment="auth-service",namespace="cloudcart"} < 1
+
+      for: 1m
+
+      labels:
+        severity: critical
+
+      annotations:
+        summary: Auth Service Down
+        description: No auth-service replicas available
+        
