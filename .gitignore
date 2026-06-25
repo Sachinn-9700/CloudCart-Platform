@@ -30,3 +30,13 @@ Thumbs.db
 
 # Misc
 coverage/
+
+# Alertmanager
+alertmanager-backup.yaml
+
+# Secrets
+*.secret.yaml
+*.backup.yaml
+
+# SMTP configs
+monitoring/alertmanager/private/*
