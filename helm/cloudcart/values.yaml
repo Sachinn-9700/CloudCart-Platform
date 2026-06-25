@@ -10,7 +10,6 @@ postgres:
   replicas: 1
   image: postgres:16
   DB_name: cloudcart
-  
 
 ingress:
   host: cloudcart.local
@@ -19,4 +18,3 @@ hpa:
   minReplicas: 1
   maxReplicas: 5
   cpuUtilization: 50
-
