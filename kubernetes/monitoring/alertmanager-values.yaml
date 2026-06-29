@@ -4,7 +4,7 @@ alertmanager:
       smtp_smarthost: 'smtp.gmail.com:587'
       smtp_from: 'sachinb9700@gmail.com'
       smtp_auth_username: 'sachinb9700@gmail.com'
-      smtp_auth_password: 'zwqy ecxn usqc ullm'
+      smtp_auth_password: 'auth password'
 
     route:
       receiver: email-notifications
