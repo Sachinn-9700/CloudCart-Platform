@@ -39,4 +39,6 @@ alertmanager-backup.yaml
 *.backup.yaml
 
 # SMTP configs
-monitoring/alertmanager/private/*
+kubernetes/monitoring/alertmanager-values.yaml
+
+**/alertmanager-values.yaml
