@@ -4,11 +4,7 @@ alertmanager:
       smtp_smarthost: 'smtp.gmail.com:587'
       smtp_from: 'sachinb9700@gmail.com'
       smtp_auth_username: 'sachinb9700@gmail.com'
-<<<<<<< HEAD:kubernetes/monitoring/alertmanager-values.yaml
       smtp_auth_password: 'auth password'
-=======
-      smtp_auth_password: 'Email Password Here'
->>>>>>> 6a1a60b (security: stop tracking local Alertmanager SMTP credentials):kubernetes/monitoring/alertmanager-values.example.yaml
 
     route:
       receiver: email-notifications
@@ -23,3 +19,4 @@ alertmanager:
         email_configs:
           - to: 'sachinb9700@gmail.com'
             send_resolved: true
+            
