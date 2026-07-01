@@ -3,8 +3,7 @@ kind: Deployment
 
 metadata:
   name: postgres
-  namespace: cloudcart
-
+  
 spec:
   replicas: {{ .Values.postgres.replicas }}
 

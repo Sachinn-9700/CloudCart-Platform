@@ -4,7 +4,6 @@ kind: HorizontalPodAutoscaler
 
 metadata:
   name: auth-service-hpa
-  namespace: cloudcart
 
 spec:
   scaleTargetRef:

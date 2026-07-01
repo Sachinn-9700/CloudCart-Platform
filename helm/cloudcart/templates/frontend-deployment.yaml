@@ -3,7 +3,6 @@ kind: Deployment
 
 metadata:
   name: frontend
-  namespace: cloudcart
 
 spec:
   replicas: {{ .Values.frontend.replicas }}

@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: auth-service
-  namespace: cloudcart
+  name: auth-service  
   
-
 spec:
   replicas: {{ .Values.backend.replicas }}
 
