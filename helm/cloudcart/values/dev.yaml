@@ -1,13 +1,13 @@
 frontend:
-  replicas: 2
+  replicas: 1
   image: cloudcart-frontend:multistage
 
 backend:
-  replicas: 2
+  replicas: 1
   image: cloudcart-auth-service:v1
 
 postgres:
-  replicas: 2
+  replicas: 1
   image: postgres:16
   DB_name: cloudcart
 
@@ -15,6 +15,6 @@ ingress:
   host: cloudcart.local
 
 hpa:
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 5
   cpuUtilization: 50
