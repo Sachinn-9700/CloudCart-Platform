@@ -1,13 +1,13 @@
 frontend:
-  replicas: 1
+  replicas: 2
   image: cloudcart-frontend:multistage
 
 backend:
-  replicas: 1
+  replicas: 2
   image: cloudcart-auth-service:v1
 
 postgres:
-  replicas: 1
+  replicas: 2
   image: postgres:16
   DB_name: cloudcart
 
