@@ -6,19 +6,15 @@ on:
       - main
 
 jobs:
-  docker-login:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Display Build Information
-        run: |
-          echo "===== CloudCart CI ====="
-          echo "Repository : ${{ github.repository }}"
-          echo "Branch     : ${{ github.ref_name }}"
-          echo "Commit     : ${{ github.sha }}"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -26,10 +22,35 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Verify Login
-        run: |
-          echo "Docker Hub Login Successful"
+      - name: Generate Image Tag
+        id: vars
+        run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Build and Push Frontend Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile.multistage
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:${{ steps.vars.outputs.TAG }}
+
+      - name: Build and Push Auth Service Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend/auth-service
+          file: ./backend/auth-service/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:${{ steps.vars.outputs.TAG }}
 
       - name: Pipeline Completed
         run: |
-          echo "Stage 2 Completed"
+          echo "======================================"
+          echo "CloudCart CI completed successfully!"
+          echo "Frontend Image Pushed"
+          echo "Auth Service Image Pushed"
+          echo "Image Tag: ${{ steps.vars.outputs.TAG }}"
+          echo "======================================"
