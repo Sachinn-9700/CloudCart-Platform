@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
-          file: ./frontend/Dockerfile.multistage
+          file: ./frontend/Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:latest
@@ -54,3 +54,4 @@ jobs:
           echo "Auth Service Image Pushed"
           echo "Image Tag: ${{ steps.vars.outputs.TAG }}"
           echo "======================================"
+          
