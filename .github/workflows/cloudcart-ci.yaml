@@ -54,4 +54,3 @@ jobs:
           echo "Auth Service Image Pushed"
           echo "Image Tag: ${{ steps.vars.outputs.TAG }}"
           echo "======================================"
-          
