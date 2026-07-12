@@ -2,6 +2,7 @@
 
 ## 🛒 Production-Grade Cloud-Native E-Commerce Platform
 
+
 CloudCart Platform is a production-inspired microservices e-commerce application built to demonstrate modern DevOps, Kubernetes, GitOps, observability, autoscaling, and platform engineering practices.
 
 The project starts locally on Minikube and is designed for future migration to AWS EKS.
