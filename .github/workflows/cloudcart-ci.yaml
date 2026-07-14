@@ -10,22 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout Repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # Login to Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      # Generate Short Commit SHA
       - name: Generate Image Tag
         id: vars
         run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
+      # Build & Push Frontend
       - name: Build and Push Frontend Image
         uses: docker/build-push-action@v5
         with:
@@ -35,6 +40,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:${{ steps.vars.outputs.TAG }}
 
+      # Build & Push Backend
       - name: Build and Push Auth Service Image
         uses: docker/build-push-action@v5
         with:
@@ -44,11 +50,24 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:${{ steps.vars.outputs.TAG }}
 
+      # Update Helm Values
+      - name: Update Helm Values
+        run: |
+          sed -i "s|image: .*cloudcart-frontend:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:${{ steps.vars.outputs.TAG }}|" helm/cloudcart/values/dev.yaml
+
+          sed -i "s|image: .*cloudcart-auth-service:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:${{ steps.vars.outputs.TAG }}|" helm/cloudcart/values/dev.yaml
+
+          echo "========== Updated Helm Values =========="
+          cat helm/cloudcart/values/dev.yaml
+          echo "========================================="
+
+      # Pipeline Completed
       - name: Pipeline Completed
         run: |
           echo "======================================"
           echo "CloudCart CI completed successfully!"
           echo "Frontend Image Pushed"
           echo "Auth Service Image Pushed"
+          echo "Helm values updated"
           echo "Image Tag: ${{ steps.vars.outputs.TAG }}"
           echo "======================================"

@@ -1,10 +1,10 @@
 frontend:
   replicas: 1
-  image: cloudcart-frontend:multistage
+  image: sachinn9700/cloudcart-frontend:initial
 
 backend:
   replicas: 1
-  image: cloudcart-auth-service:v1
+  image: sachinn9700/cloudcart-auth-service:initial
 
 postgres:
   replicas: 1
@@ -18,3 +18,4 @@ hpa:
   minReplicas: 1
   maxReplicas: 5
   cpuUtilization: 50
+
