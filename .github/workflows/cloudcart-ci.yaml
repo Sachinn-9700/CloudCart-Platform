@@ -33,7 +33,6 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:${{ steps.vars.outputs.TAG }}
 
       - name: Build and Push Auth Service Image
@@ -43,7 +42,6 @@ jobs:
           file: ./backend/auth-service/Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:${{ steps.vars.outputs.TAG }}
 
       - name: Pipeline Completed
