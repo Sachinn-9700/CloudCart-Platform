@@ -21,7 +21,7 @@ spec:
         - name: auth-service
 
           image: {{ .Values.backend.image }}
-          imagePullPolicy: ifpresent
+          imagePullPolicy: IfNotPresent
 
           ports:
             - containerPort: 8000
