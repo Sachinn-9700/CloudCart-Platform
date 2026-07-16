@@ -1,10 +1,10 @@
 frontend:
-  replicas: 1
-  image: sachinn9700/cloudcart-frontend:initial
+  repository: sachinn9700/cloudcart-frontend
+  tag: initial
 
 backend:
-  replicas: 1
-  image: sachinn9700/cloudcart-auth-service:initial
+  repository: sachinn9700/cloudcart-auth-service
+  tag: initial
 
 postgres:
   replicas: 1

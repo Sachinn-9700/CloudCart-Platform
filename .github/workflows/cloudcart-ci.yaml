@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Docker Buildx
+      # Setup Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -25,12 +25,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Generate Short Commit SHA
+      # Generate Image Tag
       - name: Generate Image Tag
         id: vars
         run: echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
-      # Build & Push Frontend
+      # Build & Push Frontend Image
       - name: Build and Push Frontend Image
         uses: docker/build-push-action@v5
         with:
@@ -40,7 +40,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:${{ steps.vars.outputs.TAG }}
 
-      # Build & Push Backend
+      # Build & Push Backend Image
       - name: Build and Push Auth Service Image
         uses: docker/build-push-action@v5
         with:
@@ -53,21 +53,26 @@ jobs:
       # Update Helm Values
       - name: Update Helm Values
         run: |
-          sed -i "s|image: .*cloudcart-frontend:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-frontend:${{ steps.vars.outputs.TAG }}|" helm/cloudcart/values/dev.yaml
+          sed -i "s/tag:.*/tag: ${{ steps.vars.outputs.TAG }}/" helm/cloudcart/values/dev.yaml
 
-          sed -i "s|image: .*cloudcart-auth-service:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:${{ steps.vars.outputs.TAG }}|" helm/cloudcart/values/dev.yaml
+      # Configure Git
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          echo "========== Updated Helm Values =========="
-          cat helm/cloudcart/values/dev.yaml
-          echo "========================================="
+      # Commit Helm Changes
+      - name: Commit Helm Values
+        run: |
+          git add helm/cloudcart/values/dev.yaml
+          git commit -m "ci: update image tags to ${{ steps.vars.outputs.TAG }}" || echo "No changes to commit"
+
+      # Push Changes to GitHub
+      - name: Push Changes
+        run: |
+          git push
 
       # Pipeline Completed
       - name: Pipeline Completed
         run: |
-          echo "======================================"
-          echo "CloudCart CI completed successfully!"
-          echo "Frontend Image Pushed"
-          echo "Auth Service Image Pushed"
-          echo "Helm values updated"
-          echo "Image Tag: ${{ steps.vars.outputs.TAG }}"
-          echo "======================================"
+          echo "CloudCart CI completed successfully."
