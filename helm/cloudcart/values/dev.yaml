@@ -1,12 +1,5 @@
 frontend:
   repository: sachinn9700/cloudcart-frontend
-<<<<<<< HEAD
-  tag: 8b3a925
-
-backend:
-  repository: sachinn9700/cloudcart-auth-service
-  tag: 8b3a925
-=======
   tag: 8b3a925
   replicas: 1
 
@@ -14,8 +7,6 @@ backend:
   repository: sachinn9700/cloudcart-auth-service
   tag: 8b3a925
   replicas: 1
-
->>>>>>> 8205ddc (fix(helm): add replica values and correct ConfigMap reference)
 
 postgres:
   replicas: 1
