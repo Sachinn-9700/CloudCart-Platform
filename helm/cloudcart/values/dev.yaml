@@ -1,11 +1,11 @@
 frontend:
   repository: sachinn9700/cloudcart-frontend
-  tag: 4c78304
+  tag: b90fa8c
   replicas: 1
 
 backend:
   repository: sachinn9700/cloudcart-auth-service
-  tag: 4c78304
+  tag: b90fa8c
   replicas: 1
 
 postgres:
