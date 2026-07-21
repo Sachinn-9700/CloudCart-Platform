@@ -46,8 +46,8 @@ jobs:
       - name: Build and Push Auth Service Image
         uses: docker/build-push-action@v5
         with:
-          context: ./backend/auth-service
-          file: ./backend/auth-service/Dockerfile
+          context: ./services/auth-service
+          file: ./services/auth-service/Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/cloudcart-auth-service:${{ steps.vars.outputs.TAG }}
