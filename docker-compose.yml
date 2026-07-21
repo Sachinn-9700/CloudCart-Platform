@@ -23,7 +23,7 @@ services:
     image: cloudcart-auth-service:python312-alpine
     container_name: auth-service
     env_file:
-      - ./backend/auth-service/.env
+      - ./services/auth-service/.env
     ports:
       - "8000:8000"
     depends_on:

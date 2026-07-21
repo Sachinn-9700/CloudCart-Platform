@@ -1,10 +1,10 @@
 # ☁️ CloudCart Platform
 
-## Production-Style Cloud-Native E-Commerce Platform
+## Production-Style Cloud-Native Microservices Platform
 
-CloudCart Platform is a production-inspired cloud-native e-commerce application built to demonstrate modern DevOps engineering practices using Docker, Kubernetes, Helm, GitHub Actions, GitOps, Prometheus, and Grafana.
+CloudCart is a production-inspired cloud-native e-commerce platform built to demonstrate modern DevOps engineering practices using Docker, Kubernetes, Helm, GitHub Actions, GitOps, Prometheus, and Grafana.
 
-The project is intentionally built like a real production system rather than a tutorial project. Every stage focuses on automation, reproducibility, observability, and operational best practices.
+Rather than following a tutorial, the project is developed incrementally to simulate how a real platform evolves—from a single service to a scalable microservices architecture with automated CI/CD, GitOps, observability, and infrastructure automation.
 
 > **Current Environment:** Local Kubernetes (Minikube)
 >
@@ -14,409 +14,283 @@ The project is intentionally built like a real production system rather than a t
 
 # 🚀 Project Highlights
 
-- Production-style microservices architecture
-- Dockerized frontend and backend
-- Kubernetes deployments with Helm
-- GitOps deployment using ArgoCD
-- Automated CI pipeline using GitHub Actions
-- Automatic Docker image versioning
-- Automatic Helm values update
-- Automatic Kubernetes deployment through GitOps
-- Prometheus monitoring
-- Grafana dashboards
+- Production-style repository structure
+- Microservices-based architecture
+- Dockerized frontend and backend services
+- Docker Compose for local development
+- Kubernetes deployments using raw manifests and Helm
+- GitHub Actions CI pipeline
+- GitOps deployment with ArgoCD
+- Automated Docker image versioning
+- Prometheus monitoring & Grafana dashboards
 - Horizontal Pod Autoscaler (HPA)
-- ConfigMaps, Secrets and Persistent Volumes
-- Production-oriented repository structure
+- ConfigMaps, Secrets and Persistent Storage
 
 ---
 
-# 🏗️ Current Architecture
+# 📌 Current Implementation
+
+Currently implemented:
+
+- ✅ React Frontend
+- ✅ FastAPI Auth Service
+- ✅ PostgreSQL
+- ✅ Docker & Docker Compose
+- ✅ Kubernetes Manifests
+- ✅ Helm Deployment
+- ✅ GitHub Actions CI
+- ✅ ArgoCD GitOps
+- ✅ Prometheus & Grafana
+- ✅ Horizontal Pod Autoscaler
+
+Repository scaffold created for:
+
+- 🚧 Product Service
+- 🚧 Cart Service
+- 🚧 Order Service
+- 🚧 Payment Service
+
+---
+
+# 🏗️ Platform Architecture
 
 ```text
-                   Developer
-                       │
-                  Git Push
-                       │
-                  GitHub Repo
-                       │
-             GitHub Actions (CI)
-                       │
-      ┌────────────────┴───────────────┐
-      │                                │
-Build Frontend Image            Build Backend Image
-      │                                │
-      └──────────────┬─────────────────┘
-                     │
-             Push Images to Docker Hub
-                     │
+                     Developer
+                         │
+                    Git Push
+                         │
+                  GitHub Repository
+                         │
+                GitHub Actions (CI)
+                         │
+            Build & Push Docker Images
+                         │
              Update Helm Image Tags
-                     │
-          Commit Updated values/dev.yaml
-                     │
-                  Push to GitHub
-                     │
-                 ArgoCD (GitOps)
-                     │
-             Kubernetes Cluster
-                     │
-      ┌──────────────┴───────────────┐
-      │                              │
- Frontend Service            Auth Service
-      │                              │
-      └──────────────┬───────────────┘
-                     │
-                PostgreSQL
-                     │
-                  Persistent
-                   Storage
-                     │
-                 NGINX Ingress
-                     │
-             http://cloudcart.local
+                         │
+                    Commit to Git
+                         │
+                    ArgoCD (GitOps)
+                         │
+               Kubernetes Cluster
+                         │
+      ┌──────────────┬──────────────┬──────────────┐
+      │              │              │
+ Frontend      Auth Service ✓   Product Service 🚧
+                                      │
+                    Cart / Order / Payment 🚧
+                                      │
+                                PostgreSQL
+                                      │
+                             NGINX Ingress
+                                      │
+                           cloudcart.local
 ```
 
 ---
 
 # 🛠️ Technology Stack
 
-## Frontend
+### Application
 
 - React
-- Vite
-
-## Backend
-
 - FastAPI
-- Python
-
-## Database
-
 - PostgreSQL
 
-## Containerization
+### Platform
 
 - Docker
-- Docker Hub
-
-## Container Orchestration
-
+- Docker Compose
 - Kubernetes
-- Minikube
-
-## Kubernetes Package Management
-
 - Helm
 
-## GitOps
-
-- ArgoCD
-
-## CI/CD
+### CI/CD & GitOps
 
 - GitHub Actions
+- ArgoCD
+- Docker Hub
 
-## Monitoring
+### Observability
 
 - Prometheus
 - Grafana
 
-## Networking
+### Infrastructure (Planned)
 
-- NGINX Ingress Controller
-
----
-
-# 📁 Repository Structure
-
-```
-CloudCart-Platform/
-
-├── frontend/
-├── backend/
-│   └── auth-service/
-├── database/
-├── docker-compose.yml
-│
-├── helm/
-│   └── cloudcart/
-│       ├── Chart.yaml
-│       ├── templates/
-│       └── values/
-│           └── dev.yaml
-│
-├── gitops/
-│   └── applications/
-│
-├── kubernetes/
-│
-├── docs/
-│
-└── .github/
-    └── workflows/
-        └── cloudcart-ci.yaml
-```
+- Terraform
+- AWS EKS
 
 ---
 
-# ✅ Current Features
+# ✅ Features
 
-## Application
-
-- React Frontend
-- FastAPI Authentication Service
-- PostgreSQL Database
-
----
-
-## Docker
+### Containerization
 
 - Multi-stage frontend image
 - Optimized backend image
-- Docker Compose
-- Docker Hub image publishing
+- Docker Compose development environment
 
----
-
-## Kubernetes
+### Kubernetes
 
 - Deployments
 - Services
 - ConfigMaps
 - Secrets
 - Persistent Volume Claims
-- Ingress
+- NGINX Ingress
 - Health Probes
 - Resource Limits
 
----
-
-## Helm
+### Helm
 
 - Parameterized deployments
 - Environment-specific values
-- Configurable replicas
-- Configurable image repositories
 - Configurable image tags
-- Configurable ingress host
+- Configurable replicas
+- Configurable ingress
 - Configurable HPA
 
----
+### CI/CD
 
-## GitHub Actions (CI)
+GitHub Actions automatically:
 
-Automatically performs:
+- Builds Docker images
+- Pushes images to Docker Hub
+- Generates image tags
+- Updates Helm values
+- Commits updated image tags
 
-- Repository checkout
-- Docker image build
-- Docker Hub push
-- Generate image tag from Git SHA
-- Update Helm values
-- Commit updated image tags
-- Push changes back to GitHub
+### GitOps
 
----
+ArgoCD automatically:
 
-## GitOps (ArgoCD)
-
-Automatically:
-
-- Watches GitHub repository
-- Detects Helm value changes
-- Synchronizes Kubernetes cluster
+- Watches the Git repository
+- Detects Helm changes
+- Synchronizes the cluster
 - Self-heals drift
 - Supports automatic pruning
 
----
+### Monitoring
 
-## Monitoring
-
-- Prometheus metrics collection
+- Prometheus metrics
 - Grafana dashboards
 - Kubernetes metrics integration
-- Application metrics endpoint
 
 ---
 
-## Auto Scaling
-
-- Horizontal Pod Autoscaler
-- CPU-based scaling
-
----
-
-# 📊 Current Project Status
+# 📊 Project Status
 
 | Component | Status |
 |-----------|--------|
+| Repository Restructure | ✅ |
+| Multi-service Layout | ✅ |
 | React Frontend | ✅ |
-| FastAPI Auth Service | ✅ |
+| Auth Service | ✅ |
 | PostgreSQL | ✅ |
 | Docker | ✅ |
 | Docker Compose | ✅ |
 | Kubernetes | ✅ |
-| NGINX Ingress | ✅ |
 | Helm | ✅ |
 | GitHub Actions | ✅ |
-| Docker Hub | ✅ |
 | ArgoCD | ✅ |
 | GitOps | ✅ |
 | Prometheus | ✅ |
 | Grafana | ✅ |
 | Horizontal Pod Autoscaler | ✅ |
-| Terraform | 🚧 |
-| AWS EKS | 🚧 |
 | Product Service | 🚧 |
 | Cart Service | 🚧 |
-| Payment Service | 🚧 |
 | Order Service | 🚧 |
+| Payment Service | 🚧 |
+| Terraform | 🚧 |
+| AWS EKS | 🚧 |
 
 ---
 
-# 🔄 CI/CD & GitOps Workflow
+# 🔄 Repository Evolution
 
-```
-Developer
-
-↓
-
-Git Push
-
-↓
-
-GitHub Actions
-
-↓
-
-Build Docker Images
-
-↓
-
-Push Images to Docker Hub
-
-↓
-
-Update Helm values/dev.yaml
-
-↓
-
-Commit Updated Image Tag
-
-↓
-
-Push to GitHub
-
-↓
-
-ArgoCD Detects Change
-
-↓
-
-Deploy to Kubernetes
-
-↓
-
-Application Updated
+```text
+React + FastAPI
+        │
+Docker
+        │
+Docker Compose
+        │
+Kubernetes Manifests
+        │
+Helm
+        │
+GitHub Actions (CI)
+        │
+ArgoCD (GitOps)
+        │
+Repository Restructured for Microservices
+        │
+Terraform (Planned)
+        │
+AWS EKS (Planned)
 ```
 
 ---
 
-# 🎯 Project Goals
+# 📚 Key Learnings
 
-This project is being developed to gain hands-on experience with:
-
-- Docker
-- Kubernetes
-- Helm
-- GitOps
-- CI/CD
-- Infrastructure as Code
-- Monitoring
-- Cloud-native architecture
-- Production deployment strategies
-- Platform engineering practices
-
-The focus is on understanding **why** each technology is used and how they work together in a real-world deployment pipeline.
-
----
-
-# 📚 What I Learned
-
-Building CloudCart has provided practical experience with:
+Building CloudCart provided hands-on experience with:
 
 - Docker image optimization
-- Kubernetes deployments and networking
-- Services and Ingress
-- ConfigMaps and Secrets
-- Persistent Volumes
+- Kubernetes networking
 - Helm templating
 - GitHub Actions automation
-- GitOps using ArgoCD
+- GitOps with ArgoCD
 - Dynamic image versioning
-- Prometheus monitoring
-- Grafana visualization
-- YAML troubleshooting
-- Git rebase with CI-generated commits
-- Production-style debugging and troubleshooting
+- Prometheus & Grafana
+- Kubernetes troubleshooting
+- Production-style debugging
+- Git workflows and repository management
 
 ---
 
 # 🚧 Roadmap
 
-## Infrastructure
-
-- Terraform for AWS infrastructure
-- AWS EKS deployment
-- Remote Terraform state
-
-## Microservices
+## Phase 1 — Microservices
 
 - Product Service
 - Cart Service
-- Payment Service
 - Order Service
+- Payment Service
 
-## Security
+## Phase 2 — Infrastructure
 
-- Trivy image scanning
+- Terraform
+- AWS VPC
+- Amazon EKS
+- Remote Terraform State
+
+## Phase 3 — Security
+
+- Trivy Image Scanning
 - RBAC
 - Network Policies
-- Secrets management improvements
+- Improved Secret Management
 
-## Observability
+## Phase 4 — Observability
 
 - Alertmanager
 - Loki
-- Distributed tracing
 - OpenTelemetry
-
-## Kubernetes
-
-- Production-grade Helm chart
-- Multiple environments
-- PodDisruptionBudgets
-- Resource optimization
+- Distributed Tracing
 
 ---
 
 # 💡 Engineering Principles
 
-CloudCart follows a few core principles throughout development:
+CloudCart is built around a few core engineering principles:
 
-- Build production-style solutions, not tutorial projects.
-- Understand every technology before using it.
-- Automate repetitive tasks wherever possible.
+- Build production-style solutions instead of tutorial projects.
+- Understand every technology before introducing it.
+- Automate repetitive workflows.
 - Treat Git as the single source of truth.
 - Keep infrastructure reproducible.
-- Learn through troubleshooting real problems rather than avoiding them.
-- Prioritize simplicity over unnecessary complexity.
-
----
-
-# 🤝 Contributing
-
-Contributions, suggestions, and feedback are always welcome.
-
-If you have ideas for improving the platform or its DevOps workflows, feel free to open an issue or submit a pull request.
+- Learn by solving real operational problems.
+- Prefer simplicity over unnecessary complexity.
 
 ---
 
@@ -426,4 +300,4 @@ This project is licensed under the MIT License.
 
 ---
 
-> **CloudCart Platform** is an ongoing DevOps learning project that evolves incrementally toward a production-grade cloud-native platform. Each milestone introduces new tooling and operational practices while preserving a realistic engineering workflow.
+> CloudCart Platform is an evolving DevOps engineering project focused on building a production-style cloud-native platform through incremental improvements. Each milestone introduces new tooling and operational practices while preserving a realistic engineering workflow.
