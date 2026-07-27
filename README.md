@@ -196,7 +196,7 @@ ArgoCD automatically:
 | Prometheus | ✅ |
 | Grafana | ✅ |
 | Horizontal Pod Autoscaler | ✅ |
-| Product Service | 🚧 |
+| Product Service | ✅ |
 | Cart Service | 🚧 |
 | Order Service | 🚧 |
 | Payment Service | 🚧 |
@@ -252,7 +252,6 @@ Building CloudCart provided hands-on experience with:
 
 ## Phase 1 — Microservices
 
-- Product Service
 - Cart Service
 - Order Service
 - Payment Service
