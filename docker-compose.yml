@@ -32,6 +32,19 @@ services:
     networks:
       - cloudcart-network
 
+  product-service:
+    image: cloudcart-product-service:python312-alpine
+    container_name: product-container-1
+    env_file:
+      - ./services/product-service/.env
+    ports:
+      - "8001:8000"
+    depends_on:
+     postgres:
+      condition: service_healthy
+    networks:
+      - cloudcart-network
+ 
   frontend:
     image: cloudcart-frontend:multistage
     container_name: frontend
