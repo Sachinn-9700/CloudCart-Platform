@@ -45,7 +45,6 @@ Currently implemented:
 
 Repository scaffold created for:
 
-- 🚧 Product Service
 - 🚧 Cart Service
 - 🚧 Order Service
 - 🚧 Payment Service
@@ -75,7 +74,7 @@ Repository scaffold created for:
                          │
       ┌──────────────┬──────────────┬──────────────┐
       │              │              │
- Frontend      Auth Service ✓   Product Service 🚧
+ Frontend      Auth Service ✓   Product Service ✅
                                       │
                     Cart / Order / Payment 🚧
                                       │
