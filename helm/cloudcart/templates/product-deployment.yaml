@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: auth-service
+  name: product-service
 
 spec:
-  replicas: {{ .Values.authService.replicas }}
+  replicas: {{ .Values.productService.replicas }}
 
   selector:
     matchLabels:
-      app: auth-service
+      app: product-service
 
   template:
     metadata:
       labels:
-        app: auth-service
+        app: product-service
 
     spec:
       containers:
-        - name: auth-service
+        - name: product-service
 
-          image: "{{ .Values.authService.repository }}:{{ .Values.authService.tag }}"
+          image: "{{ .Values.productService.repository }}:{{ .Values.productService.tag }}"
           imagePullPolicy: IfNotPresent
 
           ports:
@@ -28,7 +28,7 @@ spec:
 
           envFrom:
             - configMapRef:
-                name: auth-service-config
+                name: product-service-config
 
           env:
             - name: DB_USER

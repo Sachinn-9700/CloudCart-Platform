@@ -3,10 +3,9 @@ kind: Deployment
 
 metadata:
   name: postgres
-  
+ 
 spec:
   replicas: {{ .Values.postgres.replicas }}
-
   selector:
     matchLabels:
       app: postgres

@@ -3,14 +3,19 @@ frontend:
   tag: b90fa8c
   replicas: 1
 
-backend:
+authService:
   repository: sachinn9700/cloudcart-auth-service
   tag: b90fa8c
   replicas: 1
 
-postgres:
+productService:
+  repository: sachinn9700/cloudcart-product-service
+  tag: b90fa8c
   replicas: 1
+
+postgres:
   image: postgres:16
+  replicas: 1
   DB_name: cloudcart
 
 ingress:
@@ -20,4 +25,3 @@ hpa:
   minReplicas: 1
   maxReplicas: 5
   cpuUtilization: 50
-
