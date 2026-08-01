@@ -1,0 +1,17 @@
+.why-cloudcart{
+
+padding:120px 8%;
+
+background:#050505;
+
+}
+
+.feature-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+
+}

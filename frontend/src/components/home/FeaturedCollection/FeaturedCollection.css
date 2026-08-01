@@ -1,0 +1,41 @@
+.featured-section{
+
+padding:120px 8%;
+
+background:#080808;
+
+}
+
+.section-heading{
+
+margin-bottom:60px;
+
+}
+
+.section-heading p{
+
+color:var(--gold);
+
+letter-spacing:4px;
+
+text-transform:uppercase;
+
+margin-bottom:14px;
+
+}
+
+.section-heading h2{
+
+font-size:3rem;
+
+}
+
+.vehicle-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+gap:40px;
+
+}

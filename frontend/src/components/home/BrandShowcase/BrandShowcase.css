@@ -1,0 +1,47 @@
+.brand-showcase{
+
+padding:120px 8%;
+
+background:#080808;
+
+}
+
+.section-heading{
+
+margin-bottom:70px;
+
+text-align:center;
+
+}
+
+.section-heading p{
+
+color:var(--gold);
+
+letter-spacing:5px;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.section-heading h2{
+
+font-size:3rem;
+
+line-height:1.2;
+
+color:var(--text);
+
+}
+
+.brand-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:28px;
+
+}

@@ -1,0 +1,75 @@
+.hero-image-container{
+
+position:relative;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex:1;
+
+min-height:650px;
+
+}
+
+.hero-glow{
+
+position:absolute;
+
+width:520px;
+
+height:520px;
+
+border-radius:50%;
+
+background:radial-gradient(
+circle,
+rgba(212,175,55,.20) 0%,
+rgba(212,175,55,.06) 45%,
+transparent 75%
+);
+
+filter:blur(25px);
+
+}
+
+.hero-car{
+
+width:100%;
+
+max-width:720px;
+
+position:relative;
+
+z-index:2;
+
+animation:heroFloat 6s ease-in-out infinite;
+
+filter:
+drop-shadow(0 40px 70px rgba(0,0,0,.55));
+
+}
+
+@keyframes heroFloat{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
