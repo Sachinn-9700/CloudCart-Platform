@@ -1,0 +1,29 @@
+.hero-section{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:flex-start;
+
+padding:0 8%;
+
+position:relative;
+
+background:linear-gradient(
+180deg,
+#050505 0%,
+#090909 100%
+);
+
+overflow:hidden;
+
+}
+
+.hero-content{
+
+max-width:720px;
+
+}

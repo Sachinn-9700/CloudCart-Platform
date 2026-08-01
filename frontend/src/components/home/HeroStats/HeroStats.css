@@ -1,0 +1,25 @@
+.hero-stats{
+
+display:flex;
+
+gap:70px;
+
+margin-top:70px;
+
+}
+
+.hero-stats h2{
+
+font-size:2rem;
+
+color:var(--gold);
+
+}
+
+.hero-stats p{
+
+margin-top:8px;
+
+color:var(--text-secondary);
+
+}
