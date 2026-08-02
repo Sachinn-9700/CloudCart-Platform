@@ -1,6 +1,6 @@
 import "./WhyChooseUs.css";
 
-import features from "../../../data/features";
+import features from "../../../data/catalog/features";
 
 import FeatureCard from "../FeatureCard";
 

@@ -1,13 +1,37 @@
 import "./VehicleCard.css";
 
+function formatPrice(price) {
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0,
+  }).format(price);
+}
+
 export default function VehicleCard({ vehicle }) {
   return (
     <article className="vehicle-card">
 
-      <img
-        src={vehicle.image}
-        alt={vehicle.model}
-      />
+      <div className="vehicle-image">
+
+        <img
+          src={vehicle.image}
+          alt={`${vehicle.brand} ${vehicle.model}`}
+        />
+
+        {vehicle.certified && (
+          <span className="badge certified">
+            CloudCart Certified
+          </span>
+        )}
+
+        {vehicle.collectorEdition && (
+          <span className="badge collector">
+            Collector Edition
+          </span>
+        )}
+
+      </div>
 
       <div className="vehicle-info">
 
@@ -16,14 +40,16 @@ export default function VehicleCard({ vehicle }) {
         </span>
 
         <h3>
-          {vehicle.model}
+          {vehicle.model} {vehicle.variant}
         </h3>
 
         <div className="meta">
 
           <span>{vehicle.year}</span>
 
-          <span>{vehicle.mileage.toLocaleString()} KM</span>
+          <span>
+            {vehicle.mileage.toLocaleString()} km
+          </span>
 
           <span>{vehicle.importedFrom}</span>
 
@@ -31,24 +57,20 @@ export default function VehicleCard({ vehicle }) {
 
         <div className="price">
 
-          <small>
-            Market Price
-          </small>
+          <small>Market Price</small>
 
           <del>
-            {vehicle.marketPrice}
+            {formatPrice(vehicle.originalPrice)}
           </del>
 
           <h2>
-            {vehicle.cloudCartPrice}
+            {formatPrice(vehicle.currentPrice)}
           </h2>
 
         </div>
 
         <button>
-
-          Explore Vehicle →
-
+          View Details →
         </button>
 
       </div>

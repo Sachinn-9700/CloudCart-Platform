@@ -1,6 +1,6 @@
 import "./BrandShowcase.css";
 
-import brands from "../../../data/brands";
+import brands from "../../../data/catalog/brands";
 
 import BrandLogo from "../BrandLogo";
 

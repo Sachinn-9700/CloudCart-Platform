@@ -1,10 +1,11 @@
 import "./FeaturedCollection.css";
 
-import featuredVehicles from "../../../data/featuredVehicles";
-
 import VehicleCard from "../VehicleCard";
+import getFeaturedVehicles from "../../../utils/inventory/getFeaturedVehicles";
 
 export default function FeaturedCollection() {
+
+  const vehicles = getFeaturedVehicles();
 
   return (
 
@@ -15,23 +16,18 @@ export default function FeaturedCollection() {
         <p>Featured Collection</p>
 
         <h2>
-
           Curated Luxury Inventory
-
         </h2>
 
       </div>
 
       <div className="vehicle-grid">
 
-        {featuredVehicles.map(vehicle => (
+        {vehicles.map((vehicle) => (
 
           <VehicleCard
-
             key={vehicle.id}
-
             vehicle={vehicle}
-
           />
 
         ))}
