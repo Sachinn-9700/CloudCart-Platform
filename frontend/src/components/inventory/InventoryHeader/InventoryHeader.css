@@ -1,0 +1,23 @@
+.inventory-header {
+  margin: 2rem 0;
+}
+
+.inventory-subtitle {
+  color: #d4af37;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.4rem;
+}
+
+.inventory-title {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.inventory-description {
+  color: #9ca3af;
+  max-width: 650px;
+  line-height: 1.7;
+}

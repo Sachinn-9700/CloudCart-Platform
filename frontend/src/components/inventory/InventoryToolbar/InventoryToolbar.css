@@ -1,0 +1,64 @@
+.inventory-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+
+    margin:2rem 0;
+}
+
+.inventory-toolbar input{
+
+    flex:1;
+
+    padding:.9rem 1rem;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:10px;
+
+    background:#161616;
+
+    color:#fff;
+
+    font-size:.95rem;
+
+    outline:none;
+
+}
+
+.inventory-toolbar input:focus{
+
+    border-color:#d4af37;
+
+}
+
+.toolbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+}
+
+.toolbar-right span{
+
+    color:#999;
+
+}
+
+.toolbar-right select{
+
+    background:#161616;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:8px;
+
+    padding:.8rem;
+
+}

@@ -18,16 +18,24 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route element={<MainLayout />}>
+
           <Route path="/" element={<Home />} />
+
           <Route path="/cars" element={<Cars />} />
+          <Route path="/cars/:slug" element={<VehicleDetails />} />
+
           <Route path="/bikes" element={<Bikes />} />
-          <Route path="/cars/:id" element={<VehicleDetails />} />
+          <Route path="/bikes/:slug" element={<VehicleDetails />} />
+
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+
           <Route path="*" element={<NotFound />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

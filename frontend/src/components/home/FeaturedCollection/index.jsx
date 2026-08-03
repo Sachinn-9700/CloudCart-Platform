@@ -1,6 +1,6 @@
 import "./FeaturedCollection.css";
 
-import VehicleCard from "../VehicleCard";
+import InventoryCard from "../../inventory/InventoryCard/InventoryCard";
 import getFeaturedVehicles from "../../../utils/inventory/getFeaturedVehicles";
 
 export default function FeaturedCollection() {
@@ -25,7 +25,7 @@ export default function FeaturedCollection() {
 
         {vehicles.map((vehicle) => (
 
-          <VehicleCard
+          <InventoryCard
             key={vehicle.id}
             vehicle={vehicle}
           />

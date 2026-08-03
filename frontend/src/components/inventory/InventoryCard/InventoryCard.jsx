@@ -1,4 +1,5 @@
-import "./VehicleCard.css";
+import { Link } from "react-router-dom";
+import "./InventoryCard.css";
 
 function formatPrice(price) {
   return new Intl.NumberFormat("en-IN", {
@@ -8,12 +9,15 @@ function formatPrice(price) {
   }).format(price);
 }
 
-export default function VehicleCard({ vehicle }) {
+export default function InventoryCard({ vehicle }) {
+  const detailsPath =
+    vehicle.type === "bike"
+      ? `/bikes/${vehicle.slug}`
+      : `/cars/${vehicle.slug}`;
+
   return (
     <article className="vehicle-card">
-
       <div className="vehicle-image">
-
         <img
           src={vehicle.image}
           alt={`${vehicle.brand} ${vehicle.model}`}
@@ -30,11 +34,9 @@ export default function VehicleCard({ vehicle }) {
             Collector Edition
           </span>
         )}
-
       </div>
 
       <div className="vehicle-info">
-
         <span className="brand">
           {vehicle.brand}
         </span>
@@ -44,7 +46,6 @@ export default function VehicleCard({ vehicle }) {
         </h3>
 
         <div className="meta">
-
           <span>{vehicle.year}</span>
 
           <span>
@@ -52,29 +53,23 @@ export default function VehicleCard({ vehicle }) {
           </span>
 
           <span>{vehicle.importedFrom}</span>
-
         </div>
 
         <div className="price">
-
           <small>Market Price</small>
 
-          <del>
-            {formatPrice(vehicle.originalPrice)}
-          </del>
+          <del>{formatPrice(vehicle.originalPrice)}</del>
 
-          <h2>
-            {formatPrice(vehicle.currentPrice)}
-          </h2>
-
+          <h2>{formatPrice(vehicle.currentPrice)}</h2>
         </div>
 
-        <button>
+        <Link
+          to={detailsPath}
+          className="details-button"
+        >
           View Details →
-        </button>
-
+        </Link>
       </div>
-
     </article>
   );
 }
