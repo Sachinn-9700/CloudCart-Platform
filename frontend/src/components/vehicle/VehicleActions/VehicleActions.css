@@ -1,0 +1,28 @@
+.vehicle-actions{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin:2rem 0;
+}
+
+.vehicle-actions button{
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+.vehicle-actions .primary{
+
+    background:#c9a227;
+
+    color:#111;
+
+}

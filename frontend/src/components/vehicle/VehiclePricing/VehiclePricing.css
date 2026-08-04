@@ -1,0 +1,36 @@
+.vehicle-pricing{
+    background:#161616;
+    border-radius:18px;
+    padding:2rem;
+    margin-bottom:2rem;
+}
+
+.vehicle-pricing small{
+    color:#bdbdbd;
+    text-transform:uppercase;
+}
+
+.vehicle-pricing h2{
+    font-size:2.3rem;
+    margin:.5rem 0;
+    color:#fff;
+}
+
+.market-price{
+    color:#9c9c9c;
+}
+
+.market-price span{
+    margin-left:10px;
+    text-decoration:line-through;
+}
+
+.price-saving{
+    margin-top:1rem;
+    color:#40d97b;
+    font-size:1.05rem;
+}
+
+.price-saving strong{
+    margin-left:8px;
+}

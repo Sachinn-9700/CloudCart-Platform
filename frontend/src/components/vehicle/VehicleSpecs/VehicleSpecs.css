@@ -1,0 +1,29 @@
+.vehicle-specs{
+    margin-bottom:2rem;
+}
+
+.vehicle-specs h2{
+    margin-bottom:1.5rem;
+}
+
+.spec-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:1rem;
+}
+
+.spec-card{
+    background:#171717;
+    border-radius:15px;
+    padding:1rem;
+}
+
+.spec-card small{
+    display:block;
+    color:#999;
+    margin-bottom:.4rem;
+}
+
+.spec-card strong{
+    color:white;
+}

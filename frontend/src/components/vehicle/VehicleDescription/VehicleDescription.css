@@ -1,0 +1,27 @@
+.vehicle-description{
+
+    margin-top:2rem;
+
+    background:#171717;
+
+    padding:2rem;
+
+    border-radius:18px;
+
+}
+
+.vehicle-description h2{
+
+    margin-bottom:1rem;
+
+}
+
+.vehicle-description p{
+
+    color:#cfcfcf;
+
+    line-height:1.8;
+
+    margin-bottom:1rem;
+
+}

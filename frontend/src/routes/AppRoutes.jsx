@@ -22,10 +22,16 @@ export default function AppRoutes() {
           <Route path="/" element={<Home />} />
 
           <Route path="/cars" element={<Cars />} />
-          <Route path="/cars/:slug" element={<VehicleDetails />} />
+          <Route
+            path="/cars/:slug"
+            element={<VehicleDetails />}
+          />
 
           <Route path="/bikes" element={<Bikes />} />
-          <Route path="/bikes/:slug" element={<VehicleDetails />} />
+          <Route
+            path="/bikes/:slug"
+            element={<VehicleDetails />}
+          />
 
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
