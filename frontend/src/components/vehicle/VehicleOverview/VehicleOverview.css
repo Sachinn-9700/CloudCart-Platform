@@ -1,0 +1,51 @@
+.vehicle-overview{
+
+    background:#171717;
+
+    padding:2rem;
+
+    border-radius:18px;
+
+}
+
+.vehicle-overview h2{
+
+    margin-bottom:1rem;
+
+    color:#fff;
+
+}
+
+.vehicle-overview p{
+
+    color:#bdbdbd;
+
+    line-height:1.8;
+
+    margin-bottom:1rem;
+
+}
+
+.overview-highlights{
+
+    margin-top:2rem;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:1rem;
+
+}
+
+.overview-highlights div{
+
+    background:#111;
+
+    padding:1rem;
+
+    border-radius:12px;
+
+    color:#d9d9d9;
+
+}

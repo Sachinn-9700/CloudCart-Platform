@@ -1,0 +1,21 @@
+.vehicle-info-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+    align-items: start;
+}
+
+.info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (max-width: 1024px) {
+
+    .vehicle-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

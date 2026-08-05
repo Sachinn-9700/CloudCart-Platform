@@ -2,207 +2,147 @@ import ducatiPanigale from "../../assets/bikes/ducati-panigale-v4r.webp";
 import bmwS1000RR from "../../assets/bikes/bmw-s1000rr.webp";
 import kawasakiH2 from "../../assets/bikes/kawasaki-h2.webp";
 import triumph765RS from "../../assets/bikes/triumph-street-triple-765-rs.webp";
-
 const bikes = [
   {
     id: 101,
-
     slug: "ducati-panigale-v4r",
-
     type: "bike",
-
     brand: "Ducati",
-
     model: "Panigale",
-
     variant: "V4 R",
-
     year: 2023,
-
     mileage: 2100,
-
     importedFrom: "Italy",
-
     transmission: "6-Speed",
-
     fuelType: "Petrol",
-
     engine: "998cc Desmosedici Stradale R",
-
     horsepower: 237,
-
     drivetrain: "Chain",
-
     exteriorColor: "Ducati Red",
-
     owners: 1,
-
     originalPrice: 7200000,
-
     currentPrice: 3850000,
-
     savings: 3350000,
-
     certified: true,
-
     featured: true,
-
     arrival: "CloudCart Certified",
-
     collectorEdition: true,
-
-    image: ducatiPanigale
+    image: ducatiPanigale,
+    tagline: "Homologation Royalty, Built to Wear a Number Plate",
+    story:
+      "The Panigale V4 R is Ducati's World Superbike homologation special, a machine engineered with racetrack DNA and refined for the road without losing its edge. Every rev of the Desmosedici Stradale R engine reminds you this isn't just a sportbike, it's a piece of Bologna's racing soul. Riders who choose this machine aren't just commuting, they're chasing the same feeling Ducati factory riders chase on Sunday.",
+    highlight: "A World Superbike homologation model built in limited numbers to satisfy racing regulations.",
+    ownershipStory: "Owned and carefully maintained by a single rider since new, with disciplined servicing throughout.",
+    collectorNotes: "As a homologation-special V4 R, this Panigale carries genuine racing pedigree that collectors and Ducatisti actively seek out.",
+    inspection: "Thoroughly evaluated through CloudCart's certification process, covering engine health, electronics, and chassis condition.",
+    delivery: "Imported from Italy with complete documentation and prepared for a smooth, fully verified handover.",
+    recommendedFor: ["Track Riding", "Collectors", "Weekend Rides", "Enthusiast Garages"]
   },
-
   {
     id: 102,
-
     slug: "bmw-s1000rr",
-
     type: "bike",
-
     brand: "BMW",
-
     model: "S1000RR",
-
     variant: "M Package",
-
     year: 2023,
-
     mileage: 3600,
-
     importedFrom: "Germany",
-
     transmission: "6-Speed",
-
     fuelType: "Petrol",
-
     engine: "999cc Inline-4",
-
     horsepower: 205,
-
     drivetrain: "Chain",
-
     exteriorColor: "Light White M",
-
     owners: 1,
-
     originalPrice: 4200000,
-
     currentPrice: 2480000,
-
     savings: 1720000,
-
     certified: true,
-
     featured: true,
-
     arrival: "New Arrival",
-
     collectorEdition: false,
-
-    image: bmwS1000RR
+    image: bmwS1000RR,
+    tagline: "German Precision, Wrapped in M Livery",
+    story:
+      "The S1000RR M Package brings BMW Motorrad's motorsport division straight to the street, pairing a screaming inline-four with the kind of chassis control that inspires confidence at any speed. Finished in Light White M, it carries the same visual language as BMW's championship-winning race machines. This is a superbike built for riders who demand both raw performance and German engineering discipline.",
+    highlight: "The M Package brings factory-spec carbon components and race-derived electronics to a road-going superbike.",
+    ownershipStory: "Kept by one owner since new, ridden with care and serviced strictly on schedule.",
+    collectorNotes: "The M Package variant is the most desirable S1000RR configuration, prized for its lightweight components and motorsport-focused specification.",
+    inspection: "Certified by CloudCart's inspection team after a full review of mechanical, electrical, and cosmetic condition.",
+    delivery: "Imported from Germany with complete records and prepared for immediate, hassle-free delivery.",
+    recommendedFor: ["Track Riding", "Weekend Rides", "Long Tours", "Enthusiast Garages"]
   },
-
   {
     id: 103,
-
     slug: "kawasaki-h2",
-
     type: "bike",
-
     brand: "Kawasaki",
-
     model: "Ninja H2",
-
     variant: "Carbon",
-
     year: 2022,
-
     mileage: 4300,
-
     importedFrom: "Japan",
-
     transmission: "6-Speed",
-
     fuelType: "Petrol",
-
     engine: "998cc Supercharged",
-
     horsepower: 228,
-
     drivetrain: "Chain",
-
     exteriorColor: "Mirror Coated Black",
-
     owners: 1,
-
     originalPrice: 5200000,
-
     currentPrice: 2950000,
-
     savings: 2250000,
-
     certified: true,
-
     featured: true,
-
     arrival: "Collector Edition",
-
     collectorEdition: true,
-
-    image: kawasakiH2
+    image: kawasakiH2,
+    tagline: "Supercharged Theater, Finished in Mirror Black",
+    story:
+      "The Ninja H2 Carbon is Kawasaki's answer to the question of what happens when aerospace-grade supercharging meets a motorcycle chassis. Its Mirror Coated Black finish shifts and gleams under every streetlight, hinting at the forced-induction drama waiting beneath the tank. Twist the throttle and the supercharger whine alone is enough to justify its place in any serious collection.",
+    highlight: "One of the only production motorcycles in the world fitted with a factory supercharger.",
+    ownershipStory: "Maintained by a single owner from new, stored carefully and ridden selectively.",
+    collectorNotes: "Kawasaki's supercharged engineering and the H2's limited-run Carbon trim make it a standout piece for collectors seeking genuine mechanical rarity.",
+    inspection: "Passed CloudCart's full certification review, with special attention to the supercharger system and drivetrain.",
+    delivery: "Imported from Japan with complete documentation and prepared for a fully verified delivery process.",
+    recommendedFor: ["Collectors", "Weekend Rides", "Track Riding", "Statement Machines"]
   },
-
   {
     id: 104,
-
     slug: "triumph-street-triple-765-rs",
-
     type: "bike",
-
     brand: "Triumph",
-
     model: "Street Triple",
-
     variant: "765 RS",
-
     year: 2024,
-
     mileage: 1800,
-
     importedFrom: "United Kingdom",
-
     transmission: "6-Speed",
-
     fuelType: "Petrol",
-
     engine: "765cc Inline-3",
-
     horsepower: 128,
-
     drivetrain: "Chain",
-
     exteriorColor: "Carnival Red",
-
     owners: 1,
-
     originalPrice: 2200000,
-
     currentPrice: 1480000,
-
     savings: 720000,
-
     certified: true,
-
     featured: false,
-
     arrival: "New Arrival",
-
     collectorEdition: false,
-
-    image: triumph765RS
+    image: triumph765RS,
+    tagline: "British Character, Tuned for Every Corner",
+    story:
+      "The Street Triple 765 RS delivers Triumph's celebrated triple-cylinder growl in a chassis built to feel alive on any road, from tight city corners to sweeping backroads. Finished in Carnival Red, it balances everyday rideability with a genuine sporting edge that few naked bikes manage this well. This is a machine for riders who want personality and precision in equal measure.",
+    highlight: "Triumph's signature triple-cylinder engine, shared in spirit with the brand's Moto2 race program.",
+    ownershipStory: "Owned by a single rider since new, kept in excellent condition with low, careful mileage.",
+    collectorNotes: "The 765 RS's connection to Triumph's Moto2 engine program gives it a motorsport story that enthusiasts appreciate beyond its everyday usability.",
+    inspection: "Fully inspected and certified by CloudCart, with all mechanical and electronic systems verified.",
+    delivery: "Imported from the United Kingdom with complete documentation and prepared for immediate registration.",
+    recommendedFor: ["Weekend Rides", "Long Tours", "Daily Riding", "Enthusiast Garages"]
   }
 ];
-
 export default bikes;
+

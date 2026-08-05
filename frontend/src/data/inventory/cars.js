@@ -3,264 +3,187 @@ import ferrariF8 from "../../assets/cars/ferrari-f8-tributo.webp";
 import huracanSTO from "../../assets/cars/lamborghini-huracan-sto.webp";
 import mclaren720S from "../../assets/cars/mclaren-720s.webp";
 import bmwM4CSL from "../../assets/cars/bmw-m4-csl.webp";
-
 const cars = [
   {
     id: 1,
     slug: "porsche-911-gt3-rs",
-
     type: "car",
-
     brand: "Porsche",
     model: "911",
     variant: "GT3 RS",
-
     year: 2023,
-
     mileage: 4800,
-
     importedFrom: "UAE",
-
     transmission: "PDK Automatic",
-
     fuelType: "Petrol",
-
     engine: "4.0L Naturally Aspirated Flat-6",
-
     horsepower: 518,
-
     drivetrain: "RWD",
-
     exteriorColor: "Arctic Grey",
-
     interiorColor: "Black Alcantara",
-
     owners: 1,
-
     originalPrice: 38000000,
-
     currentPrice: 17800000,
-
     savings: 20200000,
-
     certified: true,
-
     featured: true,
-
     arrival: "New Arrival",
-
     collectorEdition: false,
-
-    image: porscheGT3RS
+    image: porscheGT3RS,
+    tagline: "Track-Bred Precision, Road-Legal Fury",
+    story:
+      "The 911 GT3 RS is Porsche's purest expression of motorsport engineering brought to the street, a naturally aspirated masterpiece that rewards every input with razor-sharp feedback. This particular example wears its Arctic Grey finish like armor, ready to turn heads at the valet and dominate the apex alike. Own it, and you own a piece of Weissach's relentless pursuit of perfection.",
+    highlight: "One of the last great naturally aspirated GT3 RS models before forced induction takes over.",
+    ownershipStory: "Maintained by a single meticulous owner since new, with every service performed on schedule.",
+    collectorNotes: "Naturally aspirated flat-six GT3 RS models are increasingly viewed as future icons as the industry shifts toward turbocharging and electrification.",
+    inspection: "Every panel, system, and mechanical component was put through CloudCart's 200-point certification process before listing.",
+    delivery: "Imported from the UAE with full documentation and prepared for a seamless, white-glove handover to its next owner.",
+    recommendedFor: ["Track Days", "Collectors", "Weekend Drives", "Luxury Garage"]
   },
-
   {
     id: 2,
-
     slug: "ferrari-f8-tributo",
-
     type: "car",
-
     brand: "Ferrari",
-
     model: "F8",
-
     variant: "Tributo",
-
     year: 2022,
-
     mileage: 5200,
-
     importedFrom: "Dubai",
-
     transmission: "7-Speed DCT",
-
     fuelType: "Petrol",
-
     engine: "3.9L Twin Turbo V8",
-
     horsepower: 710,
-
     drivetrain: "RWD",
-
     exteriorColor: "Rosso Corsa",
-
     interiorColor: "Black",
-
     owners: 1,
-
     originalPrice: 48000000,
-
     currentPrice: 19800000,
-
     savings: 28200000,
-
     certified: true,
-
     featured: true,
-
     arrival: "CloudCart Certified",
-
     collectorEdition: false,
-
-    image: ferrariF8
+    image: ferrariF8,
+    tagline: "A Tribute to Speed, Painted in Rosso Corsa",
+    story:
+      "The F8 Tributo is Ferrari's love letter to its own V8 heritage, wrapped in a body sculpted for both aerodynamic efficiency and pure theater. Finished in the unmistakable Rosso Corsa, this car doesn't just move, it performs, delivering supercar drama with every throttle input. This is the kind of Ferrari that turns a simple drive into an occasion.",
+    highlight: "710 horsepower from a twin-turbo V8 that redefined what a modern Ferrari could sound and feel like.",
+    ownershipStory: "Held by one careful owner from new, garaged and driven sparingly to preserve its pristine condition.",
+    collectorNotes: "As Ferrari's V8 lineup evolves, the F8 Tributo stands as a benchmark model collectors will chase for its balance of usability and outright performance.",
+    inspection: "Thoroughly inspected and certified by CloudCart's technical team, covering engine, drivetrain, electronics, and bodywork.",
+    delivery: "Sourced from Dubai and delivered with complete import records, ready for immediate registration.",
+    recommendedFor: ["Collectors", "Weekend Drives", "Luxury Garage", "Statement Drives"]
   },
-
   {
     id: 3,
-
     slug: "lamborghini-huracan-sto",
-
     type: "car",
-
     brand: "Lamborghini",
-
     model: "Huracán",
-
     variant: "STO",
-
     year: 2022,
-
     mileage: 3400,
-
     importedFrom: "UAE",
-
     transmission: "7-Speed DCT",
-
     fuelType: "Petrol",
-
     engine: "5.2L V10",
-
     horsepower: 631,
-
     drivetrain: "RWD",
-
     exteriorColor: "Verde Mantis",
-
     interiorColor: "Black",
-
     owners: 1,
-
     originalPrice: 51000000,
-
     currentPrice: 21500000,
-
     savings: 29500000,
-
     certified: true,
-
     featured: true,
-
     arrival: "Collector Edition",
-
     collectorEdition: true,
-
-    image: huracanSTO
+    image: huracanSTO,
+    tagline: "Race Car for the Road, Wrapped in Verde Mantis",
+    story:
+      "Born from Lamborghini's Super Trofeo racing program, the Huracán STO is as close to a race car as one can legally drive to dinner. Its Verde Mantis livery and aggressive aero package announce its intentions before the naturally aspirated V10 even fires. This is a Lamborghini built for those who want motorsport DNA in their everyday garage.",
+    highlight: "A street-legal homologation of Lamborghini's GT3 race program, built in strictly limited numbers.",
+    ownershipStory: "Owned from new by a single collector who kept the car under low-mileage, climate-controlled storage.",
+    collectorNotes: "Limited production numbers and direct racing pedigree make the STO one of the most sought-after modern Huracán variants.",
+    inspection: "Fully certified through CloudCart's rigorous inspection protocol, with all mechanical and cosmetic elements verified.",
+    delivery: "Imported from the UAE with complete provenance documentation and prepared for a smooth ownership transition.",
+    recommendedFor: ["Track Days", "Collectors", "Luxury Garage", "Investment Pieces"]
   },
-
   {
     id: 4,
-
     slug: "mclaren-720s",
-
     type: "car",
-
     brand: "McLaren",
-
     model: "720S",
-
     variant: "Performance",
-
     year: 2022,
-
     mileage: 3900,
-
     importedFrom: "United Kingdom",
-
     transmission: "7-Speed SSG",
-
     fuelType: "Petrol",
-
     engine: "4.0L Twin Turbo V8",
-
     horsepower: 710,
-
     drivetrain: "RWD",
-
     exteriorColor: "Orange",
-
     interiorColor: "Black",
-
     owners: 1,
-
     originalPrice: 42000000,
-
     currentPrice: 18600000,
-
     savings: 23400000,
-
     certified: true,
-
     featured: true,
-
     arrival: "New Arrival",
-
     collectorEdition: false,
-
-    image: mclaren720S
+    image: mclaren720S,
+    tagline: "Woking Engineering, Unmistakably Bold in Orange",
+    story:
+      "The 720S is McLaren's engineering philosophy distilled into a shape that looks fast standing still. Its striking Orange finish and dihedral doors promise a spectacle, while the twin-turbo V8 beneath the carbon tub delivers on every one of those promises. This is a supercar built by a team that lives and breathes Formula 1 precision.",
+    highlight: "A carbon-fiber monocoque supercar that channels McLaren's Formula 1 engineering into road-going form.",
+    ownershipStory: "Single-owner history from new, with consistent servicing and careful, low-mileage use.",
+    collectorNotes: "McLaren's second-generation Super Series cars are gaining recognition for their engineering purity and everyday usability at supercar performance levels.",
+    inspection: "Passed CloudCart's comprehensive certification review across performance systems, chassis, and interior condition.",
+    delivery: "Imported from the United Kingdom with full documentation and prepared for a seamless delivery experience.",
+    recommendedFor: ["Track Days", "Weekend Drives", "Luxury Garage", "Statement Drives"]
   },
-
   {
     id: 5,
-
     slug: "bmw-m4-csl",
-
     type: "car",
-
     brand: "BMW",
-
     model: "M4",
-
     variant: "CSL",
-
     year: 2023,
-
     mileage: 6200,
-
     importedFrom: "Germany",
-
     transmission: "8-Speed Automatic",
-
     fuelType: "Petrol",
-
     engine: "3.0L Twin Turbo Inline-6",
-
     horsepower: 543,
-
     drivetrain: "RWD",
-
     exteriorColor: "Frozen Black",
-
     interiorColor: "Black & Red",
-
     owners: 1,
-
     originalPrice: 18000000,
-
     currentPrice: 9200000,
-
     savings: 8800000,
-
     certified: true,
-
     featured: true,
-
     arrival: "CloudCart Certified",
-
     collectorEdition: false,
-
-    image: bmwM4CSL
+    image: bmwM4CSL,
+    tagline: "Coupe Sport Lightweight, Reborn for a New Era",
+    story:
+      "The M4 CSL revives one of BMW M's most storied nameplates, stripping weight and adding purpose to create the sharpest M4 ever built. Finished in Frozen Black with a striking red and black interior, it balances everyday German engineering with genuine track-day intent. This is a limited-run M car built for purists who still want to drive it home afterward.",
+    highlight: "A weight-stripped, power-boosted M4 built in strictly limited numbers as BMW M's ultimate expression of the platform.",
+    ownershipStory: "Owned by a single enthusiast since new, with disciplined maintenance and careful, low-mileage stewardship.",
+    collectorNotes: "Limited production and the revival of the legendary CSL badge make this M4 a strong candidate for long-term collector interest.",
+    inspection: "Certified by CloudCart's inspection team, with full verification of mechanical health, electronics, and body condition.",
+    delivery: "Imported directly from Germany with complete documentation and prepared for immediate registration and delivery.",
+    recommendedFor: ["Track Days", "Weekend Drives", "Collectors", "Daily Driven Performance"]
   }
 ];
-
 export default cars;
+

@@ -1,79 +1,71 @@
 import { useParams } from "react-router-dom";
 
+import "./VehicleDetails.css";
+
 import useVehicle from "../../hooks/useVehicle";
 
 import VehicleHero from "../../components/vehicle/VehicleHero";
 import VehiclePricing from "../../components/vehicle/VehiclePricing";
 import VehicleSpecs from "../../components/vehicle/VehicleSpecs";
 import VehicleActions from "../../components/vehicle/VehicleActions";
-import VehicleDescription from "../../components/vehicle/VehicleDescription";
+import VehicleOverview from "../../components/vehicle/VehicleOverview";
+import VehicleInfoGrid from "../../components/vehicle/VehicleInfoGrid";
 import SimilarVehicles from "../../components/vehicle/SimilarVehicles";
 
 export default function VehicleDetails() {
 
-  const { slug } = useParams();
+    const { slug } = useParams();
 
-  const {
-    vehicle,
-    relatedVehicles,
-  } = useVehicle(slug);
+    const {
+        vehicle,
+        relatedVehicles,
+    } = useVehicle(slug);
 
-  if (!vehicle) {
+    if (!vehicle) {
+
+        return (
+            <main className="vehicle-page">
+                <h1>Vehicle not found.</h1>
+            </main>
+        );
+
+    }
 
     return (
 
-      <main
-        style={{
-          maxWidth: "1200px",
-          margin: "100px auto",
-          color: "#fff",
-        }}
-      >
+        <main className="vehicle-page">
 
-        <h1>
-          Vehicle not found
-        </h1>
+            <VehicleHero
+                vehicle={vehicle}
+            />
 
-      </main>
+            <VehicleInfoGrid
+
+                left={
+                    <>
+                        <VehiclePricing vehicle={vehicle} />
+
+                        <VehicleActions />
+                    </>
+                }
+
+                right={
+                    <>
+                        <VehicleSpecs vehicle={vehicle} />
+
+                        <VehicleOverview vehicle={vehicle} />
+                    </>
+                }
+
+            />
+
+            <SimilarVehicles
+                vehicles={relatedVehicles}
+            />
+
+        </main>
 
     );
 
-  }
-
-  return (
-
-    <main
-      style={{
-        maxWidth: "1300px",
-        margin: "80px auto",
-        padding: "2rem",
-      }}
-    >
-
-      <VehicleHero
-        vehicle={vehicle}
-      />
-
-      <VehiclePricing
-        vehicle={vehicle}
-      />
-
-      <VehicleSpecs
-        vehicle={vehicle}
-      />
-
-      <VehicleActions />
-
-      <VehicleDescription
-        vehicle={vehicle}
-      />
-
-      <SimilarVehicles
-        vehicles={relatedVehicles}
-      />
-
-    </main>
-
-  );
-
 }
+
