@@ -9,14 +9,8 @@ def create_product(
     db: Session,
     product: ProductCreate
 ):
-
     new_product = Product(
-        name=product.name,
-        description=product.description,
-        price=product.price,
-        stock=product.stock,
-        category=product.category,
-        image_url=product.image_url
+        **product.model_dump()
     )
 
     db.add(new_product)
@@ -26,18 +20,43 @@ def create_product(
     return new_product
 
 
-def get_all_products(db: Session):
-    return db.query(Product).all()
+def get_all_products(
+    db: Session,
+    skip: int = 0,
+    limit: int = 20,
+    brand: str | None = None,
+    featured: bool | None = None,
+):
+    query = db.query(Product)
+
+    if brand:
+        query = query.filter(
+            Product.brand.ilike(f"%{brand}%")
+        )
+
+    if featured is not None:
+        query = query.filter(
+            Product.featured == featured
+        )
+
+    return (
+        query
+        .order_by(Product.id.desc())
+        .offset(skip)
+        .limit(limit)
+        .all()
+    )
 
 
 def get_product_by_id(
     db: Session,
     product_id: int
 ):
-
-    product = db.query(Product).filter(
-        Product.id == product_id
-    ).first()
+    product = (
+        db.query(Product)
+        .filter(Product.id == product_id)
+        .first()
+    )
 
     if not product:
         raise HTTPException(
@@ -53,10 +72,11 @@ def update_product(
     product_id: int,
     updated_product: ProductCreate
 ):
-
-    product = db.query(Product).filter(
-        Product.id == product_id
-    ).first()
+    product = (
+        db.query(Product)
+        .filter(Product.id == product_id)
+        .first()
+    )
 
     if not product:
         raise HTTPException(
@@ -64,12 +84,10 @@ def update_product(
             detail="Product not found"
         )
 
-    product.name = updated_product.name
-    product.description = updated_product.description
-    product.price = updated_product.price
-    product.stock = updated_product.stock
-    product.category = updated_product.category
-    product.image_url = updated_product.image_url
+    product_data = updated_product.model_dump()
+
+    for field, value in product_data.items():
+        setattr(product, field, value)
 
     db.commit()
     db.refresh(product)
@@ -81,10 +99,11 @@ def delete_product(
     db: Session,
     product_id: int
 ):
-
-    product = db.query(Product).filter(
-        Product.id == product_id
-    ).first()
+    product = (
+        db.query(Product)
+        .filter(Product.id == product_id)
+        .first()
+    )
 
     if not product:
         raise HTTPException(

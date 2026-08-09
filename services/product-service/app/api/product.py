@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from fastapi import Depends
+from fastapi import Query
 from sqlalchemy.orm import Session
 
 from app.core.database import SessionLocal
@@ -12,6 +13,7 @@ from app.services.product_service import (
     update_product,
     delete_product,
 )
+
 
 router = APIRouter()
 
@@ -28,13 +30,13 @@ def get_db():
 
 @router.post(
     "/products",
-    response_model=ProductResponse
+    response_model=ProductResponse,
+    status_code=201
 )
 def add_product(
     product: ProductCreate,
     db: Session = Depends(get_db)
 ):
-
     return create_product(
         db,
         product
@@ -46,10 +48,29 @@ def add_product(
     response_model=list[ProductResponse]
 )
 def list_products(
+    skip: int = Query(
+        default=0,
+        ge=0
+    ),
+    limit: int = Query(
+        default=20,
+        ge=1,
+        le=100
+    ),
+    brand: str | None = Query(
+        default=None,
+        min_length=1
+    ),
+    featured: bool | None = None,
     db: Session = Depends(get_db)
 ):
-
-    return get_all_products(db)
+    return get_all_products(
+        db=db,
+        skip=skip,
+        limit=limit,
+        brand=brand,
+        featured=featured
+    )
 
 
 @router.get(
@@ -60,7 +81,6 @@ def get_product(
     product_id: int,
     db: Session = Depends(get_db)
 ):
-
     return get_product_by_id(
         db,
         product_id
@@ -76,7 +96,6 @@ def edit_product(
     product: ProductCreate,
     db: Session = Depends(get_db)
 ):
-
     return update_product(
         db,
         product_id,
@@ -91,7 +110,6 @@ def remove_product(
     product_id: int,
     db: Session = Depends(get_db)
 ):
-
     return delete_product(
         db,
         product_id

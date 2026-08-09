@@ -7,10 +7,13 @@ from app.api.product import router as product_router
 from app.core.database import Base
 from app.core.database import engine
 
+
 app = FastAPI(
     title="CloudCart Product Service",
-    version="1.0.0"
+    description="Vehicle inventory API for the CloudCart platform.",
+    version="2.0.0"
 )
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -27,21 +30,19 @@ def health_check():
 
 @app.get("/db-health")
 def db_health_check():
-
     try:
-
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
 
         return {
+            "status": "healthy",
             "database": "connected"
         }
 
-    except Exception as error:
-
+    except Exception:
         return {
-            "database": "failed",
-            "error": str(error)
+            "status": "unhealthy",
+            "database": "failed"
         }
 
 
