@@ -15,7 +15,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
     networks:
       - cloudcart-network
 
@@ -27,12 +26,15 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-     postgres:
-      condition: service_healthy
+      postgres:
+        condition: service_healthy
     networks:
       - cloudcart-network
 
   product-service:
+    build:
+      context: ./services/product-service
+      dockerfile: Dockerfile
     image: cloudcart-product-service:python312-alpine
     container_name: product-container-1
     env_file:
@@ -40,11 +42,11 @@ services:
     ports:
       - "8001:8000"
     depends_on:
-     postgres:
-      condition: service_healthy
+      postgres:
+        condition: service_healthy
     networks:
       - cloudcart-network
- 
+
   frontend:
     image: cloudcart-frontend:multistage
     container_name: frontend
@@ -60,4 +62,3 @@ volumes:
 
 networks:
   cloudcart-network:
-  

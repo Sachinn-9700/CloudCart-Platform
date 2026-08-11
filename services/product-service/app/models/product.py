@@ -18,20 +18,33 @@ class Product(Base):
     )
 
     # Vehicle identity
+    slug = Column(
+        String(150),
+        unique=True,
+        nullable=False,
+        index=True
+    )
+
+    type = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )
+
     brand = Column(
-        String,
+        String(100),
         nullable=False,
         index=True
     )
 
     model = Column(
-        String,
+        String(100),
         nullable=False,
         index=True
     )
 
     variant = Column(
-        String,
+        String(100),
         nullable=False
     )
 
@@ -49,13 +62,13 @@ class Product(Base):
     )
 
     imported_from = Column(
-        String,
+        String(100),
         nullable=True
     )
 
     # Performance
     engine = Column(
-        String,
+        String(150),
         nullable=True
     )
 
@@ -65,28 +78,28 @@ class Product(Base):
     )
 
     drivetrain = Column(
-        String,
+        String(50),
         nullable=True
     )
 
     transmission = Column(
-        String,
+        String(100),
         nullable=True
     )
 
     fuel_type = Column(
-        String,
+        String(50),
         nullable=True
     )
 
     # Appearance
     exterior_color = Column(
-        String,
+        String(100),
         nullable=True
     )
 
     interior_color = Column(
-        String,
+        String(100),
         nullable=True
     )
 
@@ -133,13 +146,13 @@ class Product(Base):
     )
 
     arrival = Column(
-        String,
+        String(100),
         nullable=True
     )
 
     # Presentation
     tagline = Column(
-        String,
+        String(255),
         nullable=True
     )
 
@@ -149,7 +162,32 @@ class Product(Base):
     )
 
     image_url = Column(
-        String,
+        String(500),
         nullable=True
     )
-    
+
+    # Vehicle story / certification
+    ownership_story = Column(
+        Text,
+        nullable=True
+    )
+
+    collector_notes = Column(
+        Text,
+        nullable=True
+    )
+
+    inspection = Column(
+        Text,
+        nullable=True
+    )
+
+    delivery = Column(
+        Text,
+        nullable=True
+    )
+
+    recommended_for = Column(
+        Text,
+        nullable=True
+    )
