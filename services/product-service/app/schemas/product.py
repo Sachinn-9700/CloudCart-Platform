@@ -4,6 +4,18 @@ from pydantic import Field
 
 
 class ProductCreate(BaseModel):
+
+    # Vehicle identity
+    slug: str = Field(
+        min_length=1,
+        max_length=150
+    )
+
+    type: str = Field(
+        min_length=1,
+        max_length=20
+    )
+
     brand: str = Field(
         min_length=1,
         max_length=100
@@ -19,6 +31,7 @@ class ProductCreate(BaseModel):
         max_length=100
     )
 
+    # Vehicle information
     year: int = Field(
         ge=1900,
         le=2100
@@ -33,6 +46,7 @@ class ProductCreate(BaseModel):
         max_length=100
     )
 
+    # Performance
     engine: str | None = Field(
         default=None,
         max_length=150
@@ -58,6 +72,7 @@ class ProductCreate(BaseModel):
         max_length=50
     )
 
+    # Appearance
     exterior_color: str | None = Field(
         default=None,
         max_length=100
@@ -68,11 +83,13 @@ class ProductCreate(BaseModel):
         max_length=100
     )
 
+    # Ownership
     owners: int | None = Field(
         default=None,
         ge=0
     )
 
+    # Pricing
     original_price: float = Field(
         gt=0
     )
@@ -86,6 +103,7 @@ class ProductCreate(BaseModel):
         ge=0
     )
 
+    # Marketplace status
     certified: bool = False
 
     featured: bool = False
@@ -97,6 +115,7 @@ class ProductCreate(BaseModel):
         max_length=100
     )
 
+    # Presentation
     tagline: str | None = Field(
         default=None,
         max_length=255
@@ -109,6 +128,17 @@ class ProductCreate(BaseModel):
         max_length=500
     )
 
+    # Vehicle story / certification
+    ownership_story: str | None = None
+
+    collector_notes: str | None = None
+
+    inspection: str | None = None
+
+    delivery: str | None = None
+
+    recommended_for: str | None = None
+
 
 class ProductResponse(ProductCreate):
     id: int
@@ -116,4 +146,3 @@ class ProductResponse(ProductCreate):
     model_config = ConfigDict(
         from_attributes=True
     )
-    
