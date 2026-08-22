@@ -1,14 +1,21 @@
 frontend:
+  repository: sachinn9700/cloudcart-frontend
+  tag: latest
   replicas: 2
-  image: cloudcart-frontend:multistage
 
-backend:
+authService:
+  repository: sachinn9700/cloudcart-auth-service
+  tag: latest
   replicas: 2
-  image: cloudcart-auth-service:v1
+
+productService:
+  repository: sachinn9700/cloudcart-product-service
+  tag: latest
+  replicas: 2
 
 postgres:
-  replicas: 2
   image: postgres:16
+  replicas: 1
   DB_name: cloudcart
 
 ingress:
