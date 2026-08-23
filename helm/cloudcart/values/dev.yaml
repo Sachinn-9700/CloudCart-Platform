@@ -1,6 +1,6 @@
 frontend:
   repository: sachinn9700/cloudcart-frontend
-  tag: b90fa8c
+  tag: a7b5eea
   replicas: 1
 
 authService:
