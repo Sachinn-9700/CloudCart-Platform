@@ -41,4 +41,5 @@ The following architecture documents will be added as the project progresses:
 - ✅ Ingress Configuration
 - ✅ Helm Packaging
 - ✅ GitOps (ArgoCD)
+- 🚧 CI Pipeline — Docker image build, push and Helm image tag automation
 - ⏳ Production CI/CD
