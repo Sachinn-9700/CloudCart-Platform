@@ -1,4 +1,5 @@
 from fastapi import HTTPException
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.models.product import Product
@@ -14,11 +15,19 @@ def create_product(
     )
 
     db.add(new_product)
-    db.commit()
+
+    try:
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(
+            status_code=409,
+            detail="Product with this slug already exists"
+        )
+
     db.refresh(new_product)
 
     return new_product
-
 
 def get_all_products(
     db: Session,
