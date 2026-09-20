@@ -103,4 +103,3 @@ CREATE INDEX ix_products_id ON public.products USING btree (id);
 --
 
 \unrestrict OAZO8EXbPvAielMqE6UolbjjdmyeFc8UhioPJR60zXOTcHdZrcTPGImfXti0nvh
-
