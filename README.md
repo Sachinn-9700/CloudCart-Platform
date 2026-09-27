@@ -1,6 +1,6 @@
 # ☁️ CloudCart Platform
 
-## Production-Style Cloud-Native Microservices Platform
+## Production-Style Cloud-Native Microservices Platform.
 
 CloudCart is a production-inspired cloud-native platform built to demonstrate modern DevOps engineering practices using Docker, Kubernetes, Helm, GitHub Actions, GitOps, Prometheus, and Grafana.
 
@@ -539,4 +539,4 @@ This project is licensed under the MIT License.
 
 ---
 
-> CloudCart Platform is an evolving DevOps engineering project focused on building a production-style cloud-native platform through incremental improvements. Each milestone introduces new tooling and operational practices while preserving a realistic engineering workflow
+> CloudCart Platform is an evolving DevOps engineering project focused on building a production-style cloud-native platform through incremental improvements. Each milestone introduces new tooling and operational practices while preserving a realistic engineering workflow.
