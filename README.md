@@ -144,8 +144,7 @@ Service  Service    Service
 ### Containerization
 
 * Docker
-* Docker Compose
-* Docker Hub
+* Docker Compose* Docker Hub
 
 ### Orchestration
 
@@ -535,7 +534,7 @@ CloudCart is built around a few core engineering principles:
 
 # 📄 License
 
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
 
 ---
 
