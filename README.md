@@ -1,4 +1,4 @@
-# ☁️ CloudCart Platform
+# ☁️ CloudCart Platform.
 
 ## Production-Style Cloud-Native Microservices Platform.
 
