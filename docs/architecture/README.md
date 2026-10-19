@@ -1,6 +1,6 @@
 # Architecture Documentation
 
-This directory contains the architectural design and infrastructure documentation for the CloudCart Platform.
+This directory contains the architectural design and infrastructure documentation for the CloudCart Platform
 
 ## Current Documentation
 
