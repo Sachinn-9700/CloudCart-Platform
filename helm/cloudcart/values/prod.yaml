@@ -1,21 +1,21 @@
 frontend:
   repository: sachinn9700/cloudcart-frontend
   tag: latest
-  replicas: 2
+  replicas: 3
 
 authService:
   repository: sachinn9700/cloudcart-auth-service
   tag: latest
-  replicas: 2
+  replicas: 3
 
 productService:
   repository: sachinn9700/cloudcart-product-service
   tag: latest
-  replicas: 2
+  replicas: 3
 
 postgres:
   image: postgres:16
-  replicas: 1
+  replicas: 2
   DB_name: cloudcart
 
 ingress:
@@ -24,4 +24,4 @@ ingress:
 hpa:
   minReplicas: 1
   maxReplicas: 5
-  cpuUtilization: 60
+  cpuUtilization: 70
